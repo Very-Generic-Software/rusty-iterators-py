@@ -28,8 +28,8 @@ class BenchmarkManager:
         return list(cls._storage.keys())
 
     @classmethod
-    def get_benchmarks(cls, name: Optional[str] = None) -> list[BenchmarkItem[Any]]:
-        if name:
-            return [(name, cls._storage[name])]
+    def get_benchmarks(cls, names: Optional[list[str]] = None) -> list[BenchmarkItem[Any]]:
+        if names:
+            return [(name, cls._storage[name]) for name in names]
 
         return list(cls._storage.items())

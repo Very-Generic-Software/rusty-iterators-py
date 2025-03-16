@@ -20,13 +20,19 @@ logger = logging.getLogger(__name__)
 
 class _ArgNamespace(Protocol):
     profile: bool
-    benchmark: Optional[str]
+    benchmarks: Optional[list[str]]
 
 
 def parse_args() -> _ArgNamespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--profile", action="store_true")
-    parser.add_argument("--benchmark", choices=BenchmarkManager.get_benchmark_names(), default=None)
+    parser.add_argument("-p", "--profile", action="store_true")
+    parser.add_argument(
+        "-b",
+        "--benchmarks",
+        nargs="+",
+        choices=BenchmarkManager.get_benchmark_names(),
+        default=None,
+    )
 
     namespace: _ArgNamespace = parser.parse_args()
 
@@ -49,7 +55,7 @@ def time(benchmark: BenchmarkCallable[Any], arg: Iterable[Any]) -> None:
 def main() -> int:
     args = parse_args()
 
-    for benchmark_name, (benchmark, arg) in BenchmarkManager.get_benchmarks(name=args.benchmark):
+    for benchmark_name, (benchmark, arg) in BenchmarkManager.get_benchmarks(names=args.benchmarks):
         logger.info("Running benchmark: `%s`", benchmark_name)
 
         if args.profile:
