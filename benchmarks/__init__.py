@@ -2,11 +2,11 @@ import logging
 
 from .scenarios import (
     benchmark_itertools_cycle,
-    benchmark_more_iterators_unique,
     benchmark_more_itertools_filter_map,
     benchmark_more_itertools_flatten,
     benchmark_more_itertools_nth,
     benchmark_more_itertools_take,
+    benchmark_more_itertools_unique,
     benchmark_more_itertools_unzip,
     benchmark_rusty_iterators_cache_cycle,
     benchmark_rusty_iterators_copy_cycle,
@@ -27,11 +27,11 @@ from .scenarios import (
 
 __all__ = (
     "benchmark_itertools_cycle",
-    "benchmark_more_iterators_unique",
     "benchmark_more_itertools_filter_map",
     "benchmark_more_itertools_flatten",
     "benchmark_more_itertools_nth",
     "benchmark_more_itertools_take",
+    "benchmark_more_itertools_unique",
     "benchmark_more_itertools_unzip",
     "benchmark_rusty_iterators_cache_cycle",
     "benchmark_rusty_iterators_copy_cycle",

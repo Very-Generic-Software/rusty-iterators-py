@@ -122,5 +122,5 @@ def benchmark_rusty_iterators_unique(arg: Iterable[int]) -> None:
 
 
 @BenchmarkManager.register(arg=range(1_000_000))
-def benchmark_more_iterators_unique(arg: Iterable[int]) -> None:
+def benchmark_more_itertools_unique(arg: Iterable[int]) -> None:
     _ = list(mi.unique(arg))
