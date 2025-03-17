@@ -2,6 +2,7 @@ import logging
 
 from .scenarios import (
     benchmark_itertools_cycle,
+    benchmark_more_iterators_unique,
     benchmark_more_itertools_filter_map,
     benchmark_more_itertools_flatten,
     benchmark_more_itertools_nth,
@@ -26,6 +27,7 @@ from .scenarios import (
 
 __all__ = (
     "benchmark_itertools_cycle",
+    "benchmark_more_iterators_unique",
     "benchmark_more_itertools_filter_map",
     "benchmark_more_itertools_flatten",
     "benchmark_more_itertools_nth",
