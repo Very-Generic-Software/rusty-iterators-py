@@ -120,6 +120,9 @@ cdef class IterInterface:
     cpdef Take take(self, int amount):
         return Take(self, amount)
 
+    cpdef Unique unique(self):
+        return Unique(self)
+
     cpdef object unzip(self):
         cdef list left = []
         cdef list right = []
@@ -571,3 +574,30 @@ cdef class Zip(IterInterface):
 
     cpdef object next(self):
         return (self.first.next(), self.second.next())
+
+@cython.final
+cdef class Unique(IterInterface):
+    def __cinit__(self, IterInterface it):
+        self.it = it
+        self.used = set()
+
+    def __str__(self):
+        return f"Unique(it={self.it})"
+
+    cpdef Unique copy(self):
+        cdef Unique obj
+
+        obj = Unique(self.it.copy())
+        obj.used = self.used.copy()
+
+        return obj
+
+    cpdef object next(self):
+        cdef object item
+
+        while True:
+            item = self.it.next()
+
+            if item not in self.used:
+                self.used.add(item)
+                return item

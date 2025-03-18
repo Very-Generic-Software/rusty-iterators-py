@@ -29,6 +29,7 @@ if TYPE_CHECKING:
         Skip,
         StepBy,
         Take,
+        Unique,
         Zip,
     )
     from rusty_iterators.core.wrappers import IterWrapper, SeqWrapper
@@ -232,6 +233,14 @@ def verify_inspect_type() -> None:
 
     assert_type(it, Inspect[int])
     assert_type(it.next(), int)
+
+
+def verify_unique_type() -> None:
+    it = LIter.from_items(1, 2, 3).unique()
+
+    assert_type(it, Unique[int])
+    assert_type(it.next(), int)
+    assert_type(it.collect(), list[int])
 
 
 def verify_peekable_type() -> None:

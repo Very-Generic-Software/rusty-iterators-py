@@ -114,3 +114,13 @@ def benchmark_more_itertools_take(arg: Iterable[int]) -> None:
 @BenchmarkManager.register(arg=range(1_000_000))
 def benchmark_rusty_iterators_take(arg: Iterable[int]) -> None:
     _ = LIter.from_it(iter(arg)).take(500_000).collect()
+
+
+@BenchmarkManager.register(arg=range(1_000_000))
+def benchmark_rusty_iterators_unique(arg: Iterable[int]) -> None:
+    _ = LIter.from_it(iter(arg)).unique().collect()
+
+
+@BenchmarkManager.register(arg=range(1_000_000))
+def benchmark_more_itertools_unique(arg: Iterable[int]) -> None:
+    _ = list(mi.unique(arg))

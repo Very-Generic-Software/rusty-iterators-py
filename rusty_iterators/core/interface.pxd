@@ -26,6 +26,7 @@ cdef class IterInterface:
     cpdef StepBy step_by(self, int step)
     cpdef object sum(self)
     cpdef Take take(self, int amount)
+    cpdef Unique unique(self)
     cpdef object unzip(self)
     cpdef Zip zip(self, IterInterface second)
 
@@ -92,6 +93,10 @@ cdef class Take(IterInterface):
     cdef IterInterface it
     cdef int taken
     cdef int amount
+
+cdef class Unique(IterInterface):
+    cdef IterInterface it
+    cdef set used
 
 cdef class Zip(IterInterface):
     cdef IterInterface first
