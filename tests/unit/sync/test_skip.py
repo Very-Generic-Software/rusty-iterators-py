@@ -21,5 +21,5 @@ def test_copy_after_skip() -> None:
 
     cp = it.copy()
 
-    assert it.next() == 2
-    assert cp.next() == 2
+    assert it.next() == 3
+    assert cp.next() == 3

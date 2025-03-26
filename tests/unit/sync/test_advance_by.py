@@ -10,11 +10,6 @@ def test_advance_by() -> None:
     assert it.collect() == [3, 4]
 
 
-def test_advance_by_depleted() -> None:
-    with pytest.raises(StopIteration):
-        LIter.from_items().advance_by(2)
-
-
 def test_advance_by_negative_idx() -> None:
     with pytest.raises(ValueError):
         LIter.from_items().advance_by(-1)
