@@ -22,13 +22,14 @@ dev = [
     "cython==3.0.11",
     "types-setuptools==75.8.0.20250110",
 ]
-
-benchmarks = [
-    "more-itertools==10.6.0",
-]
-
+benchmarks = ["more-itertools==10.6.0"]
 docs = ["mkdocs==1.6.1"]
-all = [{ include-group = "dev" }, { include-group = "docs" }]
+
+all = [
+    { include-group = "dev" },
+    { include-group = "docs" },
+    { include-group = "benchmarks" },
+]
 
 [tool.uv]
 default-groups = ["dev"]
