@@ -92,3 +92,30 @@ def test_for_each() -> None:
 @pytest.mark.parametrize("arg", ([1, 2, 3], []))
 def test_count_iterator_elements(arg: list[int]) -> None:
     assert LIter.from_seq(arg).count() == len(arg)
+
+
+def test_max_returns_the_max_item() -> None:
+    assert LIter.from_items(1, 2, 3).max() == 3
+
+
+def test_max_called_on_empty_iterator() -> None:
+    with pytest.raises(StopIteration):
+        LIter.from_items().max()
+
+
+def test_min_returns_the_min_item() -> None:
+    assert LIter.from_items(1, 2, 3).min() == 1
+
+
+def test_min_called_on_empty_iterator() -> None:
+    with pytest.raises(StopIteration):
+        LIter.from_items().min()
+
+
+def test_product_returns_the_product_of_items() -> None:
+    assert LIter.from_items(1, 2, 3).product() == 6
+
+
+def test_product_called_on_empty_iterator() -> None:
+    with pytest.raises(StopIteration):
+        LIter.from_items().product()

@@ -488,6 +488,7 @@ source = { editable = "." }
 all = [
     { name = "cython" },
     { name = "mkdocs" },
+    { name = "more-itertools" },
     { name = "mypy" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
@@ -519,6 +520,7 @@ docs = [
 all = [
     { name = "cython", specifier = "==3.0.11" },
     { name = "mkdocs", specifier = "==1.6.1" },
+    { name = "more-itertools", specifier = "==10.6.0" },
     { name = "mypy", specifier = "==1.13.0" },
     { name = "pytest", specifier = "==8.3.4" },
     { name = "pytest-asyncio", specifier = "==0.24.0" },

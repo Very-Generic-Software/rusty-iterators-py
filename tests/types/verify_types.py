@@ -70,8 +70,11 @@ def verify_items_iterator_type() -> None:
     assert_type(it.reduce(lambda acc, x: acc + x), int)
     assert_type(it.nth(5), int)
     assert_type(it.last(), int)
-    assert_type(it.for_each(lambda x: None), None)
+    assert_type(it.for_each(lambda _: None), None)
     assert_type(it.count(), int)
+    assert_type(it.max(), int)
+    assert_type(it.min(), int)
+    assert_type(it.product(), int)
 
 
 def verify_empty_sequence_iterator_type() -> None:

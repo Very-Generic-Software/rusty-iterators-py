@@ -9,6 +9,15 @@ cdef inline object _aggregate_sum(object acc, object x):
 cdef inline object _persist_last_item(object _, object x):
     return x
 
+cdef inline object _max(object acc, object x):
+    return max(acc, x)
+
+cdef inline object _min(object acc, object x):
+    return min(acc, x)
+
+cdef inline object _product(object acc, object x):
+    return acc * x
+
 cdef class IterInterface:
     def __iter__(self):
         return self
@@ -89,6 +98,12 @@ cdef class IterInterface:
     cpdef Map map(self, object func):
         return Map(self, func)
 
+    cpdef object max(self):
+        return self.reduce(_max)
+
+    cpdef object min(self):
+        return self.reduce(_min)
+
     cpdef IterInterface moving_window(self, int size, bint use_cache = True):
         return CacheMovingWindow(self, size) if use_cache else CopyMovingWindow(self, size)
 
@@ -101,6 +116,9 @@ cdef class IterInterface:
 
     cpdef Peekable peekable(self):
         return Peekable(self)
+
+    cpdef object product(self):
+        return self.reduce(_product)
 
     cpdef object reduce(self, object func):
         cdef object init = self.next()
