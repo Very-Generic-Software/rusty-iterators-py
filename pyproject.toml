@@ -34,6 +34,9 @@ all = [
 [tool.uv]
 default-groups = ["dev"]
 
+[tool.uv.pip]
+extra-index-url = ["https://pypi.org/simple"]
+
 [tool.ruff]
 line-length = 119
 
